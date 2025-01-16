@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "TTS Input Setter",
+  "version": "1.0",
+  "description": "Set text input for text-to-speech website",
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://zh-cn.text-to-speech.online/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["activeTab", "clipboardRead", "storage"]
+}
