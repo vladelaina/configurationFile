@@ -41,7 +41,7 @@ local config = {
     },
     default_prog = { "wsl.exe", "--cd", "/home/vladelaina/code/catime/src/test" },
     initial_rows = 30,
-    initial_cols = 80,
+    initial_cols = 122,
     keys = {
         { key = 'q', mods = 'LEADER', action = wezterm.action.QuitApplication },
         { key = 'h', mods = 'ALT|SHIFT', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
