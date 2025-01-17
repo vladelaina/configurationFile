@@ -1,10 +1,10 @@
 local wezterm = require("wezterm")
 
-local BACKGROUND_IMAGE = "2.jpg"
+local BACKGROUND_IMAGE = "3.jpg"
 local WSL_HOME = "/home/vladelaina"
 
 local config = {
-    font_size = 20,
+    font_size = 22,
     font = wezterm.font("Fira Code"),
     window_decorations = "RESIZE",
     color_scheme = "Catppuccin Mocha",
@@ -20,7 +20,7 @@ local config = {
     window_padding = {
         left = 35,
         right = 30,
-        top = 30,
+        top = 1,
         bottom = 20,
     },
     background = {
