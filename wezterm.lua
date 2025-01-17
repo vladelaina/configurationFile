@@ -22,7 +22,7 @@ local config = {
     background = {
         {
             source = {
-                File = "C:\\Users\\" .. os.getenv("USERNAME") .. "\\.config\\wezterm\\1.jpg",
+                File = "C:\\Users\\vladelaina\\.config\\wezterm\\1.jpg",
             },
             hsb = {
                 hue = 1.0,
@@ -39,7 +39,7 @@ local config = {
             opacity = 0.55,
         },
     },
-    default_prog = { "wsl.exe", "--cd", "/home/vladelaina/code/catime/src/test" },
+    default_prog = { "wsl.exe", "--cd", "/home/vladelaina" },
     initial_rows = 30,
     initial_cols = 115,
     keys = {
