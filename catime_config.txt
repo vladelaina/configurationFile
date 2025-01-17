@@ -1,0 +1,38 @@
+# 颜色定义
+# 推荐颜色
+# 粉色：#F5C2E7
+# 绿色：#94E2D5
+# 白色：#CDD6F4
+# 蓝色：#5FD7FF
+# 红色：#FF5F5F
+
+
+# 时钟文本颜色和层数
+CLOCK_TEXT_COLOR=#94E2D5
+CLOCK_TEXT_LAYER_COUNT=4
+
+
+# 窗口尺寸配置
+CLOCK_BASE_WINDOW_WIDTH=200     # 基础窗口宽度
+CLOCK_BASE_WINDOW_HEIGHT=65     # 基础窗口高度
+CLOCK_WINDOW_SCALE=2.0          # 窗口尺寸缩放因子
+
+
+# 字体配置
+CLOCK_BASE_FONT_SIZE=20         # 基准字体大小
+CLOCK_FONT_SCALE_FACTOR=1.0     # 字体缩放因子（相对于窗口大小）
+
+
+# 窗口位置配置
+CLOCK_WINDOW_POS_X=-50          # 窗口 X 坐标
+CLOCK_WINDOW_POS_Y=-20          # 窗口 Y 坐标
+
+
+# 时间和倒计时配置
+CLOCK_DEFAULT_START_TIME=1500   # 默认启动时的倒计时时长（单位：秒）
+CLOCK_TIME_OPTIONS=25,10,50     # 可选时间选项
+
+
+# 文本和消息配置
+CLOCK_TIMEOUT_TEXT=0
+CLOCK_MESSAGEBOX_TEXT=ok
