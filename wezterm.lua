@@ -1,7 +1,11 @@
 local wezterm = require("wezterm")
+
+local BACKGROUND_IMAGE = "2.jpg"
+local WSL_HOME = "/home/vladelaina"
+
 local config = {
     font_size = 20,
-    font = wezterm.font("Fira Code"), 
+    font = wezterm.font("Fira Code"),
     window_decorations = "RESIZE",
     color_scheme = "Catppuccin Mocha",
     text_background_opacity = 0.8,
@@ -22,7 +26,7 @@ local config = {
     background = {
         {
             source = {
-                File = "C:\\Users\\vladelaina\\.config\\wezterm\\1.jpg",
+                File = string.format("C:\\Users\\vladelaina\\.config\\wezterm\\%s", BACKGROUND_IMAGE),
             },
             hsb = {
                 hue = 1.0,
@@ -39,7 +43,7 @@ local config = {
             opacity = 0.55,
         },
     },
-    default_prog = { "wsl.exe", "--cd", "/home/vladelaina" },
+    default_prog = { "wsl.exe", "--cd", WSL_HOME },
     initial_rows = 30,
     initial_cols = 115,
     keys = {
@@ -56,5 +60,6 @@ local config = {
         { key = 'n', mods = 'CTRL', action = wezterm.action.SpawnWindow },
     }
 }
+
 
 return config
