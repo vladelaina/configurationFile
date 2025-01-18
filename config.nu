@@ -4,17 +4,17 @@ alias nu = nvim ~/.config/nushell/config.nu
 alias sn = exec nu
 alias we =  nvim /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
 alias des = cd /mnt/c/Users/vladelaina/Desktop
-alias wo = cd /home/vladelaina
+alias wo = cd /home/vladelaina/code/
 alias top = htop
 alias e = explorer.exe
 alias no = notepad.exe
 alias mk = mkdir
-alias sp = sudo pacman     
-alias spy = sudo pacman -Syu    
-alias spyu = sudo pacman -Syu    
-alias sps = sudo pacman -S   
+alias sp = sudo pacman
+alias spy = sudo pacman -Syu
+alias spyu = sudo pacman -Syu
+alias sps = sudo pacman -S
 alias spr = sudo pacman -R
-alias si = sudo nvim       
+alias si = sudo nvim
 alias ga = git add .
 alias gp = git push
 alias gpf = git push -f
@@ -27,7 +27,26 @@ alias ma = make
 alias ms = make stop
 alias mr = make run
 alias gcl = git clone
-
+def wi [num?: string] {
+    if ($num == null) {
+        do {
+            cd /mnt/c/Users/vladelaina/.config/wezterm/images
+            ^explorer.exe .
+            cd -
+        }
+    } else {
+        ^sed -i $"s/local BACKGROUND_IMAGE = \".*\\.jpg\"/local BACKGROUND_IMAGE = \"($num).jpg\"/g" /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
+    }
+}
+def gc [...message: string] {
+    git commit -am ($message | str join ' ')
+}
+def grh [...commit: string] {
+    git reset --hard ($commit | str join ' ')
+}
+def t [depth: int = 2] {
+    tree -L $depth
+}
 ##########系统设置#########
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
@@ -55,5 +74,3 @@ $env.ALL_PROXY = "socks5://127.0.0.1:10808"
 ^git config --global experimental.dnsTunneling true
 ^git config --global experimental.firewall true
 ^git config --global experimental.autoProxy false
-
-
