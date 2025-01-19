@@ -38,14 +38,50 @@ def wi [num?: string] {
         ^sed -i $"s/local BACKGROUND_IMAGE = \".*\\.jpg\"/local BACKGROUND_IMAGE = \"($num).jpg\"/g" /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
     }
 }
+def wii [] {
+    let total_images = 170
+    let random_num = (random int 1..$total_images | into string)
+
+    ^sed -i $"s/local BACKGROUND_IMAGE = \".*\\.jpg\"/local BACKGROUND_IMAGE = \"($random_num).jpg\"/g" /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
+     print $"($random_num)"
+}
+def wid [] {
+    let config_path = "/mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua"
+    let images_dir = "/mnt/c/Users/vladelaina/.config/wezterm/images"
+    let image_name = (open $config_path | lines | filter { $in | str contains "BACKGROUND_IMAGE" } | first | str replace 'local BACKGROUND_IMAGE = "' '' | str replace '"' '')
+    let full_path = $"($images_dir)/($image_name)"
+    if ($full_path | path exists) {
+        wii
+        rm $full_path
+    } else {
+        wii
+    }
+}
 def gc [...message: string] {
     git commit -am ($message | str join ' ')
 }
+def gac [...message: string] {
+    git add .
+    git commit -am ($message | str join ' ')
+}
+def gck [...message: string] {
+  git checkout ($message | str join ' ')
+}
+alias gckm = git checkout main
+
 def grh [...commit: string] {
     git reset --hard ($commit | str join ' ')
 }
+alias grhh = git reset --hard HEAD^
 def t [depth: int = 2] {
     tree -L $depth
+}
+def co [file?: path] {
+    if ($file == null) {
+        /mnt/c/Users/vladelaina/AppData/Local/Programs/cursor/Cursor.exe --disable-extensions --new-window out+err> /dev/null
+    } else {
+        /mnt/c/Users/vladelaina/AppData/Local/Programs/cursor/Cursor.exe --disable-extensions --new-window $file out+err> /dev/null
+    }
 }
 ##########系统设置#########
 mkdir ($nu.data-dir | path join "vendor/autoload")
