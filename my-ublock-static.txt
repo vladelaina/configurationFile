@@ -1,3 +1,15 @@
+! 2025年1月19日 https://chat100.ai
+chat100.ai##.gap-y-3.items-start.flex-col.inline-flex.md\:max-w-\[90\%\].md\:w-auto.w-\[90\%\] > .items-start.flex-col.flex.w-full > .font-semibold.mb-1.w-full
+chat100.ai##.overflow-hidden.place-items-center.aspect-square.bg-gray-700.text-base.text-white.font-bold.justify-center.items-center.flex.rounded-full.p-1\.5.h-8.w-8
+chat100.ai##.gap-y-3.items-start.flex-col.inline-flex.md\:max-w-\[90\%\].md\:w-auto.w-\[90\%\] > .gap-3.items-center.flex.w-full > .text-xs.text-stone-400
+chat100.ai##.overflow-hidden.justify-center.items-center.flex.place-items-center.aspect-square.bg-emerald-600.border-emerald-600.border.text-base.text-white.font-bold.bg-white.rounded-full.h-8.w-8
+chat100.ai##.text-xs.text-stone-400.py-0\.5.p-1
+chat100.ai##div.bg-white.rounded-xl.flex.md\:p-6.p-4.w-full > .md\:gap-4.gap-2.items-start.flex-row.flex.w-full > .gap-y-3.items-start.flex-col.inline-flex.md\:max-w-\[90\%\].md\:w-auto.w-\[90\%\] > .gap-3.items-center.flex > .text-xs.text-stone-400 > font > font
+chat100.ai##.hover\:bg-gray-100.hover\:text-emerald-600.group.duration-300.transition-all.items-center.gap-1.flex-row.flex.text-stone-500.text-xs.rounded-md.py-1.px-2 > span > .group-hover\:fill-emerald-600.duration-300.transition-all.fill-stone-500.w-4
+chat100.ai##.ant-message-success.ant-message-custom-content > span > font > font
+chat100.ai##.bg-white.rounded-xl.flex.md\:p-6.p-4.w-full > .md\:gap-4.gap-2.items-start.flex-row.flex.w-full > .gap-y-3.items-start.flex-col.inline-flex.md\:max-w-\[90\%\].md\:w-auto.w-\[90\%\] > .gap-3.items-center.flex > .text-xs.text-stone-400
+chat100.ai##.gap-2.items-center.flex.uppercase.text-emerald-700.font-bold.text-xl.w-full
+
 ! 2024年10月21日 https://kimi.moonshot.cn
 kimi.moonshot.cn##[href^="https://kimi.moonshot.cn/chat/%7Ccrskoh004rjagg9bke40"] > .lowImage___hU90c
 kimi.moonshot.cn##.exampleContainer___vruNK
