@@ -39,7 +39,7 @@ def wi [num?: string] {
     }
 }
 def wii [] {
-    let total_images = 170
+    let total_images = 100
     let random_num = (random int 1..$total_images | into string)
 
     ^sed -i $"s/local BACKGROUND_IMAGE = \".*\\.jpg\"/local BACKGROUND_IMAGE = \"($random_num).jpg\"/g" /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
@@ -64,6 +64,11 @@ def gac [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
 }
+def gacp [...message: string] {
+    git add .
+    git commit -am ($message | str join ' ')
+    git push
+}
 def gck [...message: string] {
   git checkout ($message | str join ' ')
 }
@@ -78,9 +83,9 @@ def t [depth: int = 2] {
 }
 def co [file?: path] {
     if ($file == null) {
-        /mnt/c/Users/vladelaina/AppData/Local/Programs/cursor/Cursor.exe --disable-extensions --new-window out+err> /dev/null
+        /mnt/d/Date/Software/rare/Windsurf/Windsurf.exe --disable-extensions --new-window out+err> /dev/null
     } else {
-        /mnt/c/Users/vladelaina/AppData/Local/Programs/cursor/Cursor.exe --disable-extensions --new-window $file out+err> /dev/null
+        /mnt/d/Date/Software/rare/Windsurf/Windsurf.exe --disable-extensions --new-window $file out+err> /dev/null
     }
 }
 ##########系统设置#########
