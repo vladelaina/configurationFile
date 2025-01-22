@@ -13,16 +13,34 @@
 			"Valid": true
 		}, {
 			"Actions": [
+				["Execute", "https://www.bing.com/search?q=%clipboard%&form=QBLH&sp=-1&lq=0&pq=&sc=0-0&qs=n&sk=&ghsh=0&ghacc=0&ghpl="]
+			],
+			"Name": "bing",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "https://www.youtube.com/results?search_query=%clipboard%"]
+			],
+			"Name": "youtube",
+			"Valid": true
+		}, {
+			"Actions": [
 				["Execute", "https://search.bilibili.com/all?vt=66970120&keyword=%clipboard%&from_source=webtop_search&spm_id_from=333.999&search_source=5"]
 			],
 			"Name": "bilibili",
 			"Valid": true
 		}, {
 			"Actions": [
-				["Execute", "https://www.baidu.com/s?ie=UTF-8&wd=%clipboard%"]
+				["Execute", "https://github.com/search?q=%clipboard%&type=repositories"]
 			],
-			"Name": "百度搜索(&B)",
-			"Valid": false
+			"Name": "github",
+			"Valid": true
+		}, {
+			"Actions": [
+				["Execute", "Everything.exe -s %clipboard%"]
+			],
+			"Name": "Everything",
+			"Valid": true
 		}, {
 			"Actions": [],
 			"Name": "",
@@ -150,12 +168,6 @@
 		}, {
 			"Actions": [],
 			"Name": "",
-			"Valid": false
-		}, {
-			"Actions": [
-				["Execute", "Everything.exe -s %clipboard%"]
-			],
-			"Name": "Everything",
 			"Valid": false
 		}],
 		"Open": true
@@ -311,7 +323,7 @@
 		],
 		"Keys": "Ctrl+PrtSc",
 		"Name": "高清截图",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["Execute", "notepad.exe"]
@@ -325,7 +337,7 @@
 		],
 		"Keys": "Ctrl+Alt+E",
 		"Name": "定位程序位置",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["Window", "HideTray"]
@@ -339,28 +351,28 @@
 		],
 		"Keys": "Alt+PageUp",
 		"Name": "调高亮度",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["SetBrightness", "DOWN"]
 		],
 		"Keys": "Alt+PageDown",
 		"Name": "调低亮度",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["SetBrightness", "DEFAULT"]
 		],
 		"Keys": "Alt+End",
 		"Name": "默认亮度",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["Internal", "Pause"]
 		],
 		"Keys": "Ctrl+Alt+M",
 		"Name": "暂停恢复MouseInc",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["Internal", "Icon"]
@@ -374,21 +386,21 @@
 		],
 		"Keys": "Ctrl+Alt+P",
 		"Name": "框选画中画",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["Snapshot", "OCR"]
 		],
 		"Keys": "Ctrl+Alt+D",
 		"Name": "框选OCR",
-		"Valid": true
+		"Valid": false
 	}, {
 		"Actions": [
 			["GetClipboard", "Stick"]
 		],
 		"Keys": "Ctrl+Alt+S",
 		"Name": "剪贴板贴图",
-		"Valid": true
+		"Valid": false
 	}],
 	"IgnoreFullScreen": false,
 	"KeySound": false,
