@@ -48,7 +48,6 @@ return
 
 wezterm:
     Run, "D:\Date\Software\Ifrequently used\WezTerm\wezterm-gui.exe"
-
 return
 
 ;==================================================================
@@ -111,7 +110,7 @@ return
 return
 
 chatgpt:
-    Run, chrome.exe --app="https://chat1.oaichat.cc/"
+    Run, chrome.exe --app="https://chat2.oaichat.cc/"
     WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
     ; 将窗口移动到屏幕右侧
     WinMove, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe,, 0, 0, 960, 1080 ; 将窗口移动到 X=1120, Y=100，宽度800，高度600
@@ -143,11 +142,11 @@ return
 ;==================================================================
 
 ^!k::
-    SetTimer, kimi, -1
+    SetTimer, perplexity, -1
 return
 
-kimi:
-    Run, chrome.exe --app="https://kimi.moonshot.cn/"
+perplexity:
+    Run, chrome.exe  "https://www.perplexity.ai/"
 return
 
 ;==================================================================
@@ -169,11 +168,11 @@ return
 ;==================================================================
 
 ^!u::
-    SetTimer, uutool, -1
+    SetTimer, upscayl, -1
 return
 
-uutool:
-    Run, chrome.exe --app="https://uutool.cn/extract-word/"
+upscayl:
+    Run, "D:\Date\Software\rare\upscayl-2.15.0-win\Upscayl.exe"
 return
 
 ;==================================================================
