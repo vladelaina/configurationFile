@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
-local BACKGROUND_IMAGE = "95.jpg"
-local WSL_HOME = "/home/vladelaina"
+local BACKGROUND_IMAGE = "86.jpg"
+local WSL_HOME = "/home/vladelaina/code/"
 
 local config = {
   font_size = 20,
