@@ -18,7 +18,7 @@ alias si = sudo nvim
 alias ga = git add .
 alias gp = git push
 alias gpf = git push -f
-alias gr = git log --oneline --all --decorate --reverse -n 20
+alias gr = git log --oneline --all --decorate --reverse -n 10
 alias gs = git status
 alias im = nvim main.c
 alias imc = nvim main.cpp
@@ -39,7 +39,7 @@ def wi [num?: string] {
     }
 }
 def wii [] {
-    let total_images = 100
+    let total_images = 55
     let random_num = (random int 1..$total_images | into string)
 
     ^sed -i $"s/local BACKGROUND_IMAGE = \".*\\.jpg\"/local BACKGROUND_IMAGE = \"($random_num).jpg\"/g" /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
@@ -64,6 +64,7 @@ def gac [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
 }
+
 def gacp [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
@@ -75,7 +76,11 @@ def gck [...message: string] {
 alias gckm = git checkout main
 
 def grh [...commit: string] {
-    git reset --hard ($commit | str join ' ')
+    if ($commit | is-empty) {
+        git reset --hard
+    } else {
+        git reset --hard ($commit | str join ' ')
+    }
 }
 alias grhh = git reset --hard HEAD^
 def t [depth: int = 2] {
