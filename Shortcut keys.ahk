@@ -34,7 +34,7 @@ return
 return
 
 notion:
-    Run, chrome.exe --app=https://www.notion.so/To-Do-List-17e17eaa76e48093854bdd9e9f6dd198
+    Run, chrome.exe --app=https://www.notion.so/Catime-TO-Do-19117eaa76e480bab172e9e70309bee5
     WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
     ; 将窗口移动到屏幕右侧
     WinMove, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe,, 0, 0, 960, 1080 ; 将窗口移动到 X=1120, Y=100，宽度800，高度600
@@ -47,7 +47,7 @@ return
 return
 
 wezterm:
-    Run, "D:\Date\Software\Ifrequently used\WezTerm\wezterm-gui.exe"
+    Run, "D:\Date\rare\WezTerm\wezterm-gui.exe"
 return
 
 ;==================================================================
@@ -110,7 +110,7 @@ return
 return
 
 chatgpt:
-    Run, chrome.exe --app="https://chat2.oaichat.cc/"
+    Run, chrome.exe --app="https://chatgpt.com/"
     WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
     ; 将窗口移动到屏幕右侧
     WinMove, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe,, 0, 0, 960, 1080 ; 将窗口移动到 X=1120, Y=100，宽度800，高度600
@@ -172,7 +172,7 @@ return
 return
 
 upscayl:
-    Run, "D:\Date\Software\rare\upscayl-2.15.0-win\Upscayl.exe"
+    Run, "D:\Date\rare\Upscayl\Upscayl.exe"
 return
 
 ;==================================================================
@@ -229,7 +229,7 @@ return
 return
 
 wez:
-	Run, D:\Date\Software\rare\WezTerm\wezterm-gui.exe
+	Run, "D:\Date\rare\WezTerm\wezterm-gui.exe
 return
 
 
@@ -278,21 +278,6 @@ return
 
 jj:
 	Run, "D:\Date\Software\Ifrequently used\bilidown\bilidown.exe"
-return
-
-;==================================================================
-
-
-!^a::
-    SetTimer,aly, -10
-return
-
-
-aly:
-    Run, chrome.exe --app="https://www.aliyundrive.com/drive/file/all"
-    WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
-    ; 将窗口移动到屏幕右侧
-    WinMove, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe,, 0, 0, 960, 1080 ; 将窗口移动到 X=1120, Y=100，宽度800，高度600
 return
 
 
