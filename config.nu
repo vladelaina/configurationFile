@@ -1,4 +1,11 @@
 alias i = nvim
+alias l = ls
+alias la = ls -a
+alias c = cd
+alias cd. = cd ..
+alias rmr = rm -r
+alias ex = exit
+alias ba = bash
 alias goo = curl -o /dev/null https://www.google.com -w "%{time_total} seconds\n" -s
 alias nu = nvim ~/.config/nushell/config.nu
 alias sn = exec nu
@@ -16,14 +23,15 @@ alias sps = sudo pacman -S
 alias spr = sudo pacman -R
 alias si = sudo nvim
 alias ga = git add .
-alias gp = git push
-alias gpf = git push -f
-alias gr = git log --oneline --all --decorate --reverse -n 10
-alias gs = git status
+alias p = git push
+alias pu = git pull
+alias pf = git push -f
+alias r = git log --oneline --all --decorate --reverse -n 10
+alias s = git status
 alias im = nvim main.c
 alias imc = nvim main.cpp
 alias iM = nvim Makefile
-alias ma = make
+alias m = make
 alias ms = make stop
 alias mr = make run
 alias gcl = git clone
@@ -60,12 +68,12 @@ def wid [] {
 def gc [...message: string] {
     git commit -am ($message | str join ' ')
 }
-def gac [...message: string] {
+def ac [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
 }
 
-def gacp [...message: string] {
+def gap [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
     git push
@@ -75,7 +83,7 @@ def gck [...message: string] {
 }
 alias gckm = git checkout main
 
-def grh [...commit: string] {
+def h [...commit: string] {
     if ($commit | is-empty) {
         git reset --hard
     } else {
