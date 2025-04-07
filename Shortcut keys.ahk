@@ -6,6 +6,53 @@
 ;==================================================================
 
 
+^!h::  ; Ctrl + Alt + H
+    ClipSaved := ClipboardAll
+    Clipboard := ""
+    Send ^c
+    ClipWait, 1
+    if ErrorLevel {
+        return
+    }
+
+    text := Clipboard
+    wordList := {}
+    result := ""
+
+    ; Add the specified message in English with "programming - Chinese translation"
+    result .= "Extract the most difficult 10% of words from the middle, with English-Chinese translation (programming - Chinese translation), without adding sequence numbers in the front.Just give me the words and the translation, no extra content is needed:`n"
+
+    Loop, Parse, text, %A_Space%%A_Tab%`r`n.,;!?()[]{}"- 
+    {
+        word := Trim(A_LoopField)
+        if (word != "") {
+            ; Skip words containing apostrophes, colons, quotation marks, or commas
+            if InStr(word, "'") || InStr(word, ":") || InStr(word, """") || InStr(word, ",")
+                continue
+
+            StringLower, wordLower, word
+
+            ; Skip pure numbers
+            if (RegExMatch(wordLower, "\d"))
+                continue
+
+            ; Skip single letters with length 1, 2, or 3
+            if (StrLen(wordLower) <= 3)
+                continue
+
+            if (!wordList.HasKey(wordLower)) {
+                wordList[wordLower] := true
+                result .= wordLower "`n"  ; Add a new line after each word
+            }
+        }
+    }
+
+    Clipboard := RTrim(result)
+    return
+
+
+
+
 
 ^!+x::
     SetTimer, cursor-id, -1
@@ -20,11 +67,11 @@ return
 
 
 ^!+c::
-    SetTimer, cursor, -1
+    SetTimer,calendar , -1
 return
 
-cursor:
-    Run, C:\Users\vladelaina\AppData\Local\Programs\cursor\Cursor.exe
+calendar:
+      Run, chrome.exe --app=https://calendar.notion.so/
 return
 
 ;==================================================================
@@ -110,7 +157,7 @@ return
 return
 
 chatgpt:
-    Run, chrome.exe --app="https://chatgpt.com/"
+    Run, chrome.exe --app="https://chatgpt.com/
     WinWaitActive, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe
     ; 将窗口移动到屏幕右侧
     WinMove, ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe,, 0, 0, 960, 1080 ; 将窗口移动到 X=1120, Y=100，宽度800，高度600
@@ -126,7 +173,7 @@ return
 ;return
 
 ;feishu:
- ;   Run, chrome.exe --app="https://k021q39fc0u.feishu.cn/minutes/home/"
+ ;   Run, chrome.exe --app="https://k021q39fc0u.feishu.cn/mindnotes/ZUDYbJAaOmhBAmn1H4Lc3rI3nGc#mindmap"
 ;return
 
 ;==================================================================
@@ -136,7 +183,7 @@ return
 return
 
 github:   
-    Run, chrome.exe "https://github.com/vladelaina?tab=repositories"   
+    Run, chrome.exe "https://github.com/vladelaina/Catime"   
 return
 
 ;==================================================================
@@ -300,7 +347,7 @@ return
 return
 
 feishu:
-    Run, chrome.exe --app="https://k021q39fc0u.feishu.cn/minutes/home/"
+    Run, chrome.exe --app="https://k021q39fc0u.feishu.cn/mindnotes/ZUDYbJAaOmhBAmn1H4Lc3rI3nGc#mindmap"
 return
 
 ;==================================================================
