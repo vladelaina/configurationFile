@@ -1,8 +1,12 @@
 alias i = nvim
+alias nf = neofetch
+alias t2 = tree -L 2
+alias t3 = tree -L 3
 alias l = ls
 alias la = ls -a
 alias c = cd
 alias cd. = cd ..
+alias pw = pwd
 alias rmr = rm -r
 alias ex = exit
 alias ba = bash
@@ -10,10 +14,12 @@ alias goo = curl -o /dev/null https://www.google.com -w "%{time_total} seconds\n
 alias nu = nvim ~/.config/nushell/config.nu
 alias sn = exec nu
 alias we =  nvim /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua
-alias des = cd /mnt/c/Users/vladelaina/Desktop
-alias wo = cd /home/vladelaina/code/
+alias de = cd /mnt/c/Users/vladelaina/Desktop
+alias wo = cd /home/vladelaina/code/Catime/
 alias top = htop
 alias e = explorer.exe
+alias e. = explorer.exe .
+alias e.. = explorer.exe ..
 alias no = notepad.exe
 alias mk = mkdir
 alias sp = sudo pacman
@@ -26,15 +32,18 @@ alias ga = git add .
 alias p = git push
 alias pu = git pull
 alias pf = git push -f
-alias r = git log --oneline --all --decorate --reverse -n 10
+alias r = git log --oneline --all --decorate --reverse -n 12
 alias s = git status
-alias im = nvim main.c
+alias im = nvim src/main.c
 alias imc = nvim main.cpp
 alias iM = nvim Makefile
-alias m = make
+def m [] {
+    try { make clean }
+    make
+}
 alias ms = make stop
 alias mr = make run
-alias gcl = git clone
+alias cl = git clone
 def wi [num?: string] {
     if ($num == null) {
         do {
@@ -72,26 +81,37 @@ def ac [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
 }
+alias op = git commit -am optimization
+def opp [ ] {
+    git commit -am optimization
+    git push
+}
+alias te = git commit -am temporary
 
-def gap [...message: string] {
+def ap [...message: string] {
     git add .
     git commit -am ($message | str join ' ')
     git push
+}
+def amend [...message: string] {
+    git commit --amend -m ($message | str join ' ')
 }
 def gck [...message: string] {
   git checkout ($message | str join ' ')
 }
 alias gckm = git checkout main
 
-def h [...commit: string] {
-    if ($commit | is-empty) {
-        git reset --hard
-    } else {
-        git reset --hard ($commit | str join ' ')
-    }
+def h [] {
+    git add .;
+    git commit -am "try";
+    git reset --hard HEAD^
+    git status
 }
-alias grhh = git reset --hard HEAD^
-def t [depth: int = 2] {
+alias rhh = git reset --hard HEAD^
+def rh [commit_hash: string] {
+    git reset --hard $commit_hash
+}
+def t [depth: int = 5] {
     tree -L $depth
 }
 def co [file?: path] {
