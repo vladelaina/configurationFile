@@ -71,24 +71,22 @@ local config = {
   
   -- 快捷键配置
   -- 窗口管理：
-  --   Leader+Q  - 退出应用程序
   --   Ctrl+N    - 新建窗口
   -- 标签页管理：
   --   Ctrl+T    - 新建标签页
   -- 面板管理：
-  --   Alt+Shift+H  - 水平分割面板
-  --   Alt+Shift+V  - 垂直分割面板
-  --   Ctrl+Q       - 关闭当前面板
+  --   Ctrl+\  - 垂直分割面板
+  --   Ctrl+-  - 水平分割面板
+  --   Ctrl+w       - 关闭当前面板
   -- 面板导航：
   --   Ctrl+h  - 切换到左侧面板
   --   Ctrl+l  - 切换到右侧面板
   --   Ctrl+k  - 切换到上方面板
   --   Ctrl+j  - 切换到下方面板
   keys = {
-    { key = 'q',          mods = 'LEADER',     action = wezterm.action.QuitApplication },
-    { key = 'h',          mods = 'ALT|SHIFT',  action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-    { key = 'v',          mods = 'ALT|SHIFT',  action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-    { key = 'q',          mods = 'CTRL',       action = wezterm.action.CloseCurrentPane { confirm = false } },
+    { key = '\\',         mods = 'CTRL',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
+    { key = '-',          mods = 'CTRL',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+    { key = 'w',          mods = 'CTRL',       action = wezterm.action.CloseCurrentPane { confirm = false } },
     { key = 'h',          mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Left' },
     { key = 'l',          mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Right' },
     { key = 'k',          mods = 'CTRL',       action = wezterm.action.ActivatePaneDirection 'Up' },
