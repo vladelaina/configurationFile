@@ -1,3 +1,5 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 # ==================================================
 # 🚀软件清单
 # ==================================================
@@ -18,22 +20,24 @@ alias nf='neofetch'                             # 显示系统信息
 alias we='nvim /mnt/c/Users/vladelaina/.config/wezterm/wezterm.lua'  # 编辑 wezterm 配置
 alias si='sudo nvim'                            # 以 root 权限打开 nvim
 alias iM='nvim Makefile'                        # 快速打开 Makefile
+alias im='nvim ./src/main.c'                        # 快速打开 Makefile
+
 
 # ==================================================
 # 📁 文件 & 目录操作
 # ==================================================
+alias web='cd /mnt/e/Catime.github.io/'
 alias c='cd'                                    # 简化 cd 命令
 alias cd..='cd ..'                              # 返回上一级目录
 alias de='cd /mnt/c/Users/vladelaina/Desktop'   # 快速进入桌面目录
-alias wo='cd /home/vladelaina/code/Catime/'     # 快速进入项目目录
+alias ca='cd /home/vladelaina/code/Catime/'     # 快速进入项目目录
+alias le='cd /home/vladelaina/code/Learn/' 
 alias pw='pwd'                                  # 显示当前目录路径
 alias mk='mkdir'                                # 创建新目录
 alias rmr='rm -rf'                               # 递归删除目录
 alias ls='lsd'
 alias l='ls'                                     # 简化 ls 命令
 alias la='ls -a'                                 # 显示包括隐藏文件的目录列表
-alias t2='tree -L 2'                             # 展示 2 层目录结构
-alias t3='tree -L 3'                             # 展示 3 层目录结构
 
 # ==================================================
 # ⚙️ 系统 & 终端工具
@@ -46,9 +50,8 @@ alias goo='curl -o /dev/null https://www.google.com -w "%{time_total} seconds\n"
 # ==================================================
 # 🪟 Windows 集成
 # ==================================================
-alias e='explorer.exe'                           # 打开 Windows 资源管理器
-alias e..='explorer.exe .'                       # 打开当前目录
-alias e...='explorer.exe ..'                     # 打开上一级目录
+alias e='explorer.exe .'                       # 打开当前目录
+alias e..='explorer.exe ..'                     # 打开上一级目录
 alias not='notepad.exe'                          # 启动记事本
 alias nzs='notepad.exe ~/.zshrc'                 # 用记事本编辑 .zshrc
 
@@ -65,23 +68,53 @@ alias spr='sudo pacman -R'                       # 删除包
 # 🧬 Git 快捷命令
 # ==================================================
 alias ga='git add .'                             # 添加所有变更
+alias cl='git clone'
 alias p='git push'                               # 推送到远程仓库
 alias pu='git pull'                              # 拉取远程仓库内容
+alias pf='git push -f'                           # 强制推送
+alias pf='git push -f'                           # 强制推送
 alias pf='git push -f'                           # 强制推送
 alias r='git log --oneline --all --decorate --reverse -n 12'  # 查看最近的 12 条提交日志
 alias s='git status'                             # 查看 Git 状态
 alias op='git commit -am optimization'           # 提交优化日志
 alias te='git commit -am temporary'              # 提交临时日志
-alias gckm='git checkout main'                   # 切换到主分支
+alias ckm='git checkout main'                   # 切换到主分支
+alias ckg='git checkout gh-pages'            
 
 # ==================================================
 # 🛠️ Git 配置与自定义函数
 # ==================================================
 
+
+m() {
+    OUTPUT_DIR="/mnt/c/Users/vladelaina/Desktop"
+    WINDOWS_PATH=$(echo "${OUTPUT_DIR}/catime.exe" | sed 's#/mnt/c/#C:/#' | sed 's#/#\\#g')
+
+    # 关闭现有进程
+    powershell.exe -Command "Stop-Process -Name catime -Force -ErrorAction SilentlyContinue"
+
+    # 编译
+    make OUTPUT_DIR="$OUTPUT_DIR"
+
+    # 启动
+    cmd.exe /C start "" "$WINDOWS_PATH"
+}
+
+
+alias mc='make clean'
+alias mr='make run'
+
+h() {
+    git reset --hard HEAD
+    git clean -fd
+    git status
+}
+
 # 快速提交当前更改（已暂存的和修改的文件）
 gc() {
     git commit -am "$*"
 }
+
 
 # 添加所有更改并提交
 ac() {
@@ -91,7 +124,13 @@ ac() {
 
 # 快速提交优化信息并推送
 opp() {
+    git add .
     git commit -am "optimization"
+    git push
+}
+
+tep() {
+    git commit -am "temporary"
     git push
 }
 
@@ -122,11 +161,39 @@ rh() {
     git reset --hard "$1"
 }
 
-# 以指定层级显示当前目录树，默认 5 层
-t() {
-    depth=${1:-5}
-    tree -L "$depth"
+function t() {
+  local level="${1:-5}"
+  tree -L "$level"
 }
+
+t() {
+  local level=5
+  local path="."
+
+  for arg in "$@"; do
+    if [[ "$arg" =~ '^[0-9]+$' ]]; then
+      level=$arg
+    else
+      path=$arg
+    fi
+  done
+
+  # 使用完整路径调用 tree
+  /usr/bin/tree -L "$level" "$path"
+}
+
+
+# 捕捉未定义命令，比如 t3、t8
+command_not_found_handler() {
+  if [[ "$1" =~ '^t([0-9]+)$' ]]; then
+    local level="${match[1]}"
+    tree -L "$level"
+  else
+    echo "zsh: command not found: $1"
+    return 127
+  fi
+}
+
 
 
 # ==================================================
@@ -176,8 +243,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # 启用命令自动建议插件
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# 命令历史设置
 HISTFILE=~/.histfile                             # 命令历史文件
 HISTSIZE=1000                                    # 命令历史记录数量
 SAVEHIST=1000                                    # 保存的历史记录数量
@@ -222,3 +287,11 @@ git config --global experimental.firewall true
 
 # 禁用 Git 的自动代理功能（防止和自定义代理冲突）
 git config --global experimental.autoProxy false
+
+#===============================
+# 防止多个终端冲突写入历史
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+
